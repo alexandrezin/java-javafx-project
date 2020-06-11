@@ -48,7 +48,7 @@ public class Colaborator {
 	public Date getRegisterDate() {
 		return registerDate;
 	}
-
+	
 	public void setRegisterDate(Date registerDate) {
 		this.registerDate = registerDate;
 	}

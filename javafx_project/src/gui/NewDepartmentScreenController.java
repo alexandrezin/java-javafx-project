@@ -3,13 +3,16 @@ package gui;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import db.DbException;
 import gui.util.Alerts;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.text.Text;
+import model.dao.DaoFactory;
+import model.dao.DepartmentDao;
+import model.entities.Department;
 
 public class NewDepartmentScreenController implements Initializable{
 	
@@ -21,9 +24,16 @@ public class NewDepartmentScreenController implements Initializable{
 	
 	@FXML 
 	public void onSaveAction() {
-		System.out.println(departmentNameTextField.getText());
-		Alerts.showAlert("Data has been saved", "The department \"" + departmentNameTextField.getText() + "\" has been succesfully  saved on database!", AlertType.CONFIRMATION);
+		try {
+		DepartmentDao departmentDao = DaoFactory.createDepartmentDao();
+		Department department = new Department(departmentNameTextField.getText());
+		departmentDao.insert(department);
+		Alerts.showAlert("Data has been saved", "The department \"" + department.getName() + "\" has been succesfully  saved on database!", AlertType.INFORMATION);
 		departmentNameTextField.clear();
+		}
+		catch (DbException e) {
+			Alerts.showAlert("Data has NOT been saved", "The department couldn't been saved! \nError: " + e.getMessage(), AlertType.ERROR);
+		}
 	}
 		
 	@Override

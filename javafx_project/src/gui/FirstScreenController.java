@@ -33,6 +33,7 @@ public class FirstScreenController implements Initializable{
 	@FXML
 	public void onMenuItemNewColaboratorAction() {
 		System.out.println("onMenuItemNewColaboratorAction");
+		loadView("/gui/NewColaboratorScreen.fxml");
 	}
 	
 	@FXML

@@ -15,7 +15,7 @@ public class Main extends Application {
 	
 	@Override
 	public void start(Stage primaryStage) {
-		try {
+		try {	
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/FirstScreen.fxml"));
 			ScrollPane scrollPane = loader.load();
 			

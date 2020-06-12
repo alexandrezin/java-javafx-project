@@ -63,7 +63,7 @@ public class Colaborator {
 
 	@Override
 	public String toString() {
-		return name;
+		return name + ", " + department.getName();
 	}
 
 	@Override

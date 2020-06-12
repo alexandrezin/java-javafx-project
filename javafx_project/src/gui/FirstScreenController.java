@@ -28,6 +28,7 @@ public class FirstScreenController implements Initializable{
 	@FXML
 	public void onMenuItemNewReportAction() {
 		System.out.println("onMenuItemNewReportAction");
+		loadView("/gui/NewReportScreen.fxml");
 	}
 	
 	@FXML

@@ -1,15 +1,17 @@
 package model.dao.impl;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 import db.DbException;
 import model.dao.ColaboratorDao;
 import model.entities.Colaborator;
+import model.entities.Department;
 
 public class ColaboratorDaoJDBC implements ColaboratorDao{
 	
@@ -58,7 +60,34 @@ public class ColaboratorDaoJDBC implements ColaboratorDao{
 
 	@Override
 	public List<Colaborator> getAll() {
-		// TODO Auto-generated method stub
+		Statement st = null;
+		ResultSet rs = null;
+		List<Colaborator> colaboratorList = new ArrayList<Colaborator>();
+		
+		try {
+			st = conn.createStatement();
+			rs = st.executeQuery("SELECT * FROM tb_Colaborator INNER JOIN tb_Department ON tb_Colaborator.idDepartment_Colaborator = tb_Department.id_Department");
+			Colaborator colaborator = new Colaborator();
+			Department department = new Department();
+			while (rs.next()) {
+				colaborator.setId(rs.getInt("id_Colaborator"));
+				colaborator.setName(rs.getString("name_Colaborator"));
+				colaborator.setEmail(rs.getString("email_Colaborator"));
+				colaborator.setRegisterDate(rs.getDate("registerDate_Colaborator"));
+				
+				department.setId(rs.getInt("idDepartment_Colaborator"));
+				department.setName(rs.getString("name_Department"));
+				
+				colaborator.setDepartment(department);
+				
+				colaboratorList.add(colaborator);
+			}
+		} 
+		
+		catch (SQLException e) {
+			throw new DbException(e.getMessage());
+		}
+		
 		return null;
 	}
 

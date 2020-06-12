@@ -14,7 +14,7 @@ import model.dao.DaoFactory;
 import model.dao.DepartmentDao;
 import model.entities.Department;
 
-public class NewDepartmentScreenController implements Initializable{
+public class NewDepartmentController implements Initializable{
 	
 	@FXML
 	private TextField departmentNameTextField;

@@ -34,7 +34,7 @@ public class NewColaboratorController implements Initializable{
 	
 	@FXML
 	public void onSaveButtonAction(){
-			try {
+		try {
 			Colaborator colaborator = new Colaborator();
 			Department department = departmentComboBox.getValue();
 			

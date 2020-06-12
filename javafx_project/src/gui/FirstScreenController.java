@@ -27,19 +27,16 @@ public class FirstScreenController implements Initializable{
 	
 	@FXML
 	public void onMenuItemNewReportAction() {
-		System.out.println("onMenuItemNewReportAction");
 		loadView("/gui/NewReportScreen.fxml");
 	}
 	
 	@FXML
 	public void onMenuItemNewColaboratorAction() {
-		System.out.println("onMenuItemNewColaboratorAction");
 		loadView("/gui/NewColaboratorScreen.fxml");
 	}
 	
 	@FXML
 	public void onMenuItemNewDepartmentAction() {
-		System.out.println("onMenuItemNewDepartmentAction");
 		loadView("/gui/NewDepartmentScreen.fxml");
 	}
 	
@@ -64,7 +61,8 @@ public class FirstScreenController implements Initializable{
 			
 			
 		} catch (IOException e) {
-			System.out.println("Error loading page" + e.getMessage());
+			e.printStackTrace();
+			System.out.println("Error loading page" + e.getMessage() + e.getCause());
 		}
 		
 	}

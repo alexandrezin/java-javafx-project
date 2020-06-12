@@ -67,9 +67,11 @@ public class ColaboratorDaoJDBC implements ColaboratorDao{
 		try {
 			st = conn.createStatement();
 			rs = st.executeQuery("SELECT * FROM tb_Colaborator INNER JOIN tb_Department ON tb_Colaborator.idDepartment_Colaborator = tb_Department.id_Department");
-			Colaborator colaborator = new Colaborator();
-			Department department = new Department();
+			
 			while (rs.next()) {
+				Colaborator colaborator = new Colaborator();
+				Department department = new Department();
+				
 				colaborator.setId(rs.getInt("id_Colaborator"));
 				colaborator.setName(rs.getString("name_Colaborator"));
 				colaborator.setEmail(rs.getString("email_Colaborator"));
@@ -88,7 +90,7 @@ public class ColaboratorDaoJDBC implements ColaboratorDao{
 			throw new DbException(e.getMessage());
 		}
 		
-		return null;
+		return colaboratorList;
 	}
 
 }

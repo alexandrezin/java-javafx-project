@@ -1,20 +1,20 @@
 package gui;
 
 import java.net.URL;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 import db.DbException;
 import gui.util.Alerts;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Alert.AlertType;
 import model.dao.ColaboratorDao;
 import model.dao.DaoFactory;
 import model.dao.ReportDao;
@@ -46,26 +46,28 @@ public class NewReportController implements Initializable{
 			Report report = new Report();
 			report.setTitle(reportTitleTextField.getText());
 			report.setColaborator(colaboratorComboBox.getValue());
-			SimpleDateFormat date = new SimpleDateFormat("MM/dd/yyyy");
-			report.setDate(date.parse(reportDatePicker.getValue().toString()));
+			
+			report.setDate(Date.from(reportDatePicker.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant())); 
+			
 			report.setDescription(reportDescriptionTextArea.getText());
 			reportDao.insert(report);
 			Alerts.showAlert("Data has been saved", "The report \"" + report.getTitle() + "\" has been succesfully  saved on database!", AlertType.INFORMATION);
+			
+			reportTitleTextField.clear();
+			colaboratorComboBox.setValue(null);
+			reportDatePicker.setValue(null);
+			reportDescriptionTextArea.clear();
 		}
 		
 		catch (DbException e){
 			Alerts.showAlert("Data has NOT been saved", "The report couldn't been saved! \nError: " + e.getMessage(), AlertType.ERROR);
-		}
-		
-		catch (ParseException e) {
-			Alerts.showAlert("Data has NOT been saved", "The department couldn't been saved! \nError: " + e.getMessage(), AlertType.ERROR);
 		}
 	}
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		ColaboratorDao colaboratorDao = DaoFactory.createColaboratorDao();
-		colaboratorComboBox.getItems().addAll(colaboratorDao.getAll());	
+		colaboratorComboBox.getItems().addAll(colaboratorDao.getAll());
 	}
 
 }

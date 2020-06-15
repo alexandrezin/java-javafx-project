@@ -12,19 +12,19 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-import model.dao.ColaboratorDao;
+import model.dao.CollaboratorDao;
 import model.dao.DaoFactory;
 import model.dao.DepartmentDao;
-import model.entities.Colaborator;
+import model.entities.Collaborator;
 import model.entities.Department;
 
-public class NewColaboratorController implements Initializable{
+public class NewCollaboratorController implements Initializable{
 	
 	@FXML
-	TextField colaboratorNameField;
+	TextField collaboratorNameField;
 	
 	@FXML
-	TextField colaboratorEmailField;
+	TextField collaboratorEmailField;
 	
 	@FXML
 	Button saveButton;
@@ -35,24 +35,24 @@ public class NewColaboratorController implements Initializable{
 	@FXML
 	public void onSaveButtonAction(){
 		try {
-			Colaborator colaborator = new Colaborator();
+			Collaborator collaborator = new Collaborator();
 			Department department = departmentComboBox.getValue();
 			
-			colaborator.setName(colaboratorNameField.getText());
-			colaborator.setEmail(colaboratorEmailField.getText());
-			colaborator.setRegisterDate(new Date());
-			colaborator.setDepartment(department);
+			collaborator.setName(collaboratorNameField.getText());
+			collaborator.setEmail(collaboratorEmailField.getText());
+			collaborator.setRegisterDate(new Date());
+			collaborator.setDepartment(department);
 			
-			ColaboratorDao colaboratorDao = DaoFactory.createColaboratorDao();
-			colaboratorDao.insert(colaborator);
-			Alerts.showAlert("Data has been saved", "The colaborator \"" + colaborator.getName() + "\" has been succesfully  saved on database!", AlertType.INFORMATION);
-			colaboratorNameField.clear();
-			colaboratorEmailField.clear();
+			CollaboratorDao collaboratorDao = DaoFactory.createCollaboratorDao();
+			collaboratorDao.insert(collaborator);
+			Alerts.showAlert("Data has been saved", "The collaborator \"" + collaborator.getName() + "\" has been succesfully  saved on database!", AlertType.INFORMATION);
+			collaboratorNameField.clear();
+			collaboratorEmailField.clear();
 			departmentComboBox.setValue(null);
 		}
 		
 		catch (DbException e){
-			Alerts.showAlert("Data has NOT been saved", "The colaborator couldn't been saved! \nError: " + e.getMessage(), AlertType.ERROR);
+			Alerts.showAlert("Data has NOT been saved", "The collaborator couldn't been saved! \nError: " + e.getMessage(), AlertType.ERROR);
 		}
 	
 	}

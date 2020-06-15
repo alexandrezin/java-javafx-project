@@ -59,12 +59,12 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
-                  <Label text="Colaborator" />
+                  <Label text="Collaborator" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <children>
-                  <ComboBox fx:id="colaboratorComboBox" prefHeight="28.0" prefWidth="250.0" />
+                  <ComboBox fx:id="collaboratorComboBox" prefHeight="28.0" prefWidth="250.0" />
                </children>
             </HBox>
          </children>

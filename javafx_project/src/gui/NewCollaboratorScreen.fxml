@@ -11,11 +11,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="371.5" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.NewColaboratorController">
+<VBox prefHeight="371.5" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.NewCollaboratorController">
    <children>
       <HBox alignment="CENTER" prefHeight="60.0" prefWidth="200.0">
          <children>
-            <Label text="New Colaborator">
+            <Label text="New Collaborator">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -46,7 +46,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <children>
-                  <TextField fx:id="colaboratorNameField" prefHeight="27.0" prefWidth="250.0" promptText="Colaborator Name" />
+                  <TextField fx:id="collaboratorNameField" prefHeight="27.0" prefWidth="250.0" promptText="Collaborator Name" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
@@ -66,7 +66,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
                <children>
-                  <TextField fx:id="colaboratorEmailField" prefHeight="27.0" prefWidth="250.0" promptText="Colaborator Email" />
+                  <TextField fx:id="collaboratorEmailField" prefHeight="27.0" prefWidth="250.0" promptText="Collaborator Email" />
                </children>
             </HBox>
          </children>

@@ -20,7 +20,7 @@ public class FirstScreenController implements Initializable{
 	private MenuItem menuItemNewReport;
 	
 	@FXML
-	private MenuItem menuItemNewColaborator;
+	private MenuItem menuItemNewCollaborator;
 	
 	@FXML
 	private MenuItem menuItemNewDepartment;
@@ -29,7 +29,7 @@ public class FirstScreenController implements Initializable{
 	private MenuItem menuItemSearchReport;
 	
 	@FXML
-	private MenuItem menuItemSearchColaborator;
+	private MenuItem menuItemSearchCollaborator;
 	
 	@FXML
 	private MenuItem menuItemSearchDepartment;
@@ -40,8 +40,8 @@ public class FirstScreenController implements Initializable{
 	}
 	
 	@FXML
-	public void onMenuItemNewColaboratorAction() {
-		loadView("/gui/NewColaboratorScreen.fxml");
+	public void onMenuItemNewCollaboratorAction() {
+		loadView("/gui/NewCollaboratorScreen.fxml");
 	}
 	
 	@FXML
@@ -55,8 +55,8 @@ public class FirstScreenController implements Initializable{
 	}
 	
 	@FXML
-	public void onMenuItemSearchColaboratorAction() {
-		loadView("/gui/SearchColaboratorScreen.fxml");
+	public void onMenuItemSearchCollaboratorAction() {
+		loadView("/gui/SearchCollaboratorScreen.fxml");
 	}
 	
 	@FXML

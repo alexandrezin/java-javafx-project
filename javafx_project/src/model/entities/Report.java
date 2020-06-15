@@ -9,17 +9,17 @@ public class Report {
 	private String description;
 	private Date date;
 	
-	private Colaborator colaborator;
+	private Collaborator collaborator;
 	
 	public Report() {
 	}
 
-	public Report(String title, String description, Date date, Colaborator colaborator) {
+	public Report(String title, String description, Date date, Collaborator collaborator) {
 		super();
 		this.title = title;
 		this.description = description;
 		this.date = date;
-		this.colaborator = colaborator;
+		this.collaborator = collaborator;
 	}
 
 	public int getId() {
@@ -54,12 +54,12 @@ public class Report {
 		this.date = date;
 	}
 
-	public Colaborator getColaborator() {
-		return colaborator;
+	public Collaborator getCollaborator() {
+		return collaborator;
 	}
 
-	public void setColaborator(Colaborator colaborator) {
-		this.colaborator = colaborator;
+	public void setColaborator(Collaborator collaborator) {
+		this.collaborator = collaborator;
 	}
 
 	@Override

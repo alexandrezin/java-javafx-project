@@ -15,10 +15,10 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import model.dao.ColaboratorDao;
+import model.dao.CollaboratorDao;
 import model.dao.DaoFactory;
 import model.dao.ReportDao;
-import model.entities.Colaborator;
+import model.entities.Collaborator;
 import model.entities.Report;
 
 public class NewReportController implements Initializable{
@@ -27,7 +27,7 @@ public class NewReportController implements Initializable{
 	TextField reportTitleTextField;
 	
 	@FXML
-	ComboBox<Colaborator> colaboratorComboBox;
+	ComboBox<Collaborator> collaboratorComboBox;
 	
 	@FXML
 	DatePicker reportDatePicker;
@@ -45,7 +45,7 @@ public class NewReportController implements Initializable{
 			
 			Report report = new Report();
 			report.setTitle(reportTitleTextField.getText());
-			report.setColaborator(colaboratorComboBox.getValue());
+			report.setColaborator(collaboratorComboBox.getValue());
 			
 			report.setDate(Date.from(reportDatePicker.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant())); 
 			
@@ -54,7 +54,7 @@ public class NewReportController implements Initializable{
 			Alerts.showAlert("Data has been saved", "The report \"" + report.getTitle() + "\" has been succesfully  saved on database!", AlertType.INFORMATION);
 			
 			reportTitleTextField.clear();
-			colaboratorComboBox.setValue(null);
+			collaboratorComboBox.setValue(null);
 			reportDatePicker.setValue(null);
 			reportDescriptionTextArea.clear();
 		}
@@ -66,8 +66,8 @@ public class NewReportController implements Initializable{
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		ColaboratorDao colaboratorDao = DaoFactory.createColaboratorDao();
-		colaboratorComboBox.getItems().addAll(colaboratorDao.getAll());
+		CollaboratorDao collaboratorDao = DaoFactory.createCollaboratorDao();
+		collaboratorComboBox.getItems().addAll(collaboratorDao.getAll());
 	}
 
 }

@@ -2,7 +2,7 @@ package model.entities;
 
 import java.util.Date;
 
-public class Colaborator {
+public class Collaborator {
 	
 	private int id;
 	private String name;
@@ -11,10 +11,10 @@ public class Colaborator {
 	
 	private  Department department;
 	
-	public Colaborator() {
+	public Collaborator() {
 	}
 
-	public Colaborator(String name, String email, Date registerDate, Department department) {
+	public Collaborator(String name, String email, Date registerDate, Department department) {
 		this.name = name;
 		this.email = email;
 		this.registerDate = registerDate;
@@ -82,7 +82,7 @@ public class Colaborator {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Colaborator other = (Colaborator) obj;
+		Collaborator other = (Collaborator) obj;
 		if (name == null) {
 			if (other.name != null)
 				return false;

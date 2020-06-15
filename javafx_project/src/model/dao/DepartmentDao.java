@@ -9,5 +9,6 @@ public interface DepartmentDao {
 	void update (Department department);
 	void delete (int id);
 	Department getById (int id);
+	List<Department> getByParemeter(String parameter);
 	List<Department> getAll();
 }

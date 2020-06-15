@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import db.DB;
 import db.DbException;
 import model.dao.ColaboratorDao;
 import model.entities.Colaborator;
@@ -37,6 +38,9 @@ public class ColaboratorDaoJDBC implements ColaboratorDao{
 		} 
 		catch (SQLException e) {
 			throw new DbException(e.getMessage());
+		}
+		finally {
+			DB.closeStatement(st);
 		}
 	}
 
@@ -71,23 +75,25 @@ public class ColaboratorDaoJDBC implements ColaboratorDao{
 			while (rs.next()) {
 				Colaborator colaborator = new Colaborator();
 				Department department = new Department();
-				
+				//Collaborator
 				colaborator.setId(rs.getInt("id_Colaborator"));
 				colaborator.setName(rs.getString("name_Colaborator"));
 				colaborator.setEmail(rs.getString("email_Colaborator"));
 				colaborator.setRegisterDate(rs.getDate("registerDate_Colaborator"));
-				
+				//Department
 				department.setId(rs.getInt("idDepartment_Colaborator"));
 				department.setName(rs.getString("name_Department"));
 				
 				colaborator.setDepartment(department);
-				
 				colaboratorList.add(colaborator);
 			}
 		} 
-		
 		catch (SQLException e) {
 			throw new DbException(e.getMessage());
+		}
+		finally {
+			DB.closeResultSet(rs);
+			DB.closeStatement(st);
 		}
 		
 		return colaboratorList;

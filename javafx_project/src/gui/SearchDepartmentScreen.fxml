@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="371.5" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.SearchDepartmentController">
+   <children>
+      <HBox alignment="CENTER" prefHeight="60.0" prefWidth="600.0">
+         <children>
+            <Label text="Search Department">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="30.0" prefWidth="200.0">
+         <children>
+            <TextField fx:id="searchDepartmentTextField" onAction="#onSearchDepartmentTextFieldChange" onKeyTyped="#onSearchDepartmentTextFieldChange" prefHeight="30.0" prefWidth="253.0" promptText="Search into Department" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="20.0" prefWidth="200.0" />
+      <HBox alignment="CENTER" prefHeight="236.0" prefWidth="600.0">
+         <children>
+            <ListView fx:id="departmentListView" prefHeight="100.0" prefWidth="474.0" />
+         </children>
+      </HBox>
+   </children>
+</VBox>

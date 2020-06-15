@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import db.DB;
 import db.DbException;
 import model.dao.DepartmentDao;
 import model.entities.Department;
@@ -32,6 +33,9 @@ public class DepartmentDaoJDBC implements DepartmentDao{
 		catch (SQLException e) {
 			throw new DbException(e.getMessage());
 		}
+		finally {
+			DB.closeStatement(st);
+		}
 		
 	}
 
@@ -52,7 +56,30 @@ public class DepartmentDaoJDBC implements DepartmentDao{
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	
+	@Override
+	public List<Department> getByParemeter(String parameter) {
+		List<Department> departmentList = new  ArrayList<Department>();
+		Statement st = null;
+		ResultSet rs = null;
+		
+		try {
+			st = conn.createStatement();
+			rs = st.executeQuery("SELECT * FROM tb_Department WHERE name_Department LIKE '%" + parameter + "%'");
+			while(rs.next()) {
+			departmentList.add(new Department(rs.getInt("id_Department"), rs.getString("name_Department")));
+			}
+		} 
+		catch (SQLException e) {
+			throw new DbException(e.getMessage());
+		}
+		finally {
+			DB.closeResultSet(rs);
+			DB.closeStatement(st);
+		}
+		return departmentList;
+	}
+	
 	@Override
 	public List<Department> getAll() {
 		List<Department> departmentList = new  ArrayList<Department>();
@@ -65,10 +92,14 @@ public class DepartmentDaoJDBC implements DepartmentDao{
 			while(rs.next()) {
 				departmentList.add(new Department(rs.getInt("id_Department"), rs.getString("name_Department")));
 			}
-		} catch (SQLException e) {
+		} 
+		catch (SQLException e) {
 			throw new DbException(e.getMessage());
+		}
+		finally {
+			DB.closeResultSet(rs);
+			DB.closeStatement(st);
 		}
 		return departmentList;
 	}
-
 }

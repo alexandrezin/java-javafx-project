@@ -15,13 +15,15 @@
                 <Menu mnemonicParsing="false" text="New">
                   <items>
                     <MenuItem fx:id="menuItemNewReport" mnemonicParsing="false" onAction="#onMenuItemNewReportAction" text="Report" />
-                        <MenuItem fx:id="menuItemNewColaborator" mnemonicParsing="false" onAction="#onMenuItemNewColaboratorAction" text="Colaborator" />
+                        <MenuItem fx:id="menuItemNewColaborator" mnemonicParsing="false" onAction="#onMenuItemNewColaboratorAction" text="Collaborator" />
                         <MenuItem fx:id="menuItemNewDepartment" mnemonicParsing="false" onAction="#onMenuItemNewDepartmentAction" text="Department" />
                   </items>
                 </Menu>
-                <Menu mnemonicParsing="false" text="Help">
+                <Menu mnemonicParsing="false" text="Search">
                   <items>
-                    <MenuItem mnemonicParsing="false" text="About" />
+                    <MenuItem fx:id="menuItemSearchReport" mnemonicParsing="false" onAction="#onMenuItemSearchReportAction" text="Reports" />
+                        <MenuItem fx:id="menuItemSearchColaborator" mnemonicParsing="false" onAction="#onMenuItemSearchColaboratorAction" text="Collaborators" />
+                        <MenuItem fx:id="menuItemSearchDepartment" mnemonicParsing="false" onAction="#onMenuItemSearchDepartmentAction" text="Departments" />
                   </items>
                 </Menu>
               </menus>

@@ -35,7 +35,7 @@ public class SearchDepartmentController implements Initializable{
 		Department department = departmentListView.getSelectionModel().getSelectedItem();
 		if (department != null) {
 			PageActions pageAction = new PageActions();
-			pageAction.loadWithObject("EditDepartmentController", department);
+			pageAction.loadWithObject("EditDepartmentScreen", department);
 		}
 	}
 	

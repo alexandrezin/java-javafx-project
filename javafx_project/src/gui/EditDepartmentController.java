@@ -31,6 +31,9 @@ public class EditDepartmentController implements Initializable{
 	Button departmentUptadeNameButton;
 	
 	@FXML
+	Button cancelButton;
+	
+	@FXML
 	public void onDepartmentUpdateButtonAction() {
 		try {
 			department.setName(departmentNameTextField.getText());
@@ -38,11 +41,17 @@ public class EditDepartmentController implements Initializable{
 			departmentDao.update(department);
 			Alerts.showAlert("Data has been saved", "The department \"" + department.getName() + "\" has been succesfully  saved on database!", AlertType.INFORMATION);
 			PageActions pageAction = new PageActions();
-			pageAction.load("/gui/SearchDepartmentScreen.fxml");
+			pageAction.load("SearchDepartmentScreen");
 		}
 		catch(DbException e) {
 			Alerts.showAlert("Data has NOT been saved", "The department couldn't been saved! \nError: " + e.getMessage(), AlertType.ERROR);
 		}
+	}
+	
+	@FXML
+	public void onCancelButtonAction() {
+		PageActions pageAction = new PageActions();
+		pageAction.load("SearchDepartmentScreen");
 	}
 	
 	@Override

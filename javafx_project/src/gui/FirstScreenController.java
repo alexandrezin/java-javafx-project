@@ -31,37 +31,37 @@ public class FirstScreenController implements Initializable{
 	@FXML
 	public void onMenuItemNewReportAction() {
 		PageActions pageAction = new PageActions();
-		pageAction.load("/gui/NewReportScreen.fxml");
+		pageAction.load("NewReportScreen");
 	}
 	
 	@FXML
 	public void onMenuItemNewCollaboratorAction() {
 		PageActions pageAction = new PageActions();
-		pageAction.load("/gui/NewCollaboratorScreen.fxml");
+		pageAction.load("NewCollaboratorScreen");
 	}
 	
 	@FXML
 	public void onMenuItemNewDepartmentAction() {
 		PageActions pageAction = new PageActions();
-		pageAction.load("/gui/NewDepartmentScreen.fxml");
+		pageAction.load("NewDepartmentScreen");
 	}
 	
 	@FXML
 	public void onMenuItemSearchReportAction() {
 		PageActions pageAction = new PageActions();
-		pageAction.load("/gui/SearchReportScreen.fxml");
+		pageAction.load("SearchReportScreen");
 	}
 	
 	@FXML
 	public void onMenuItemSearchCollaboratorAction() {
 		PageActions pageAction = new PageActions();
-		pageAction.load("/gui/SearchCollaboratorScreen.fxml");
+		pageAction.load("SearchCollaboratorScreen");
 	}
 	
 	@FXML
 	public void onMenuItemSearchDepartmentAction() {
 		PageActions pageAction = new PageActions();
-		pageAction.load("/gui/SearchDepartmentScreen.fxml");
+		pageAction.load("SearchDepartmentScreen");
 	}
 	
 	@Override

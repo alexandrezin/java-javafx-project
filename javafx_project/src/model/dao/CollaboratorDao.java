@@ -9,5 +9,6 @@ public interface CollaboratorDao {
 	void update (Collaborator collaborator);
 	void delete (int id);
 	Collaborator getById (int id);
+	List<Collaborator> getByParemeter(String parameter);
 	List<Collaborator> getAll();
 }

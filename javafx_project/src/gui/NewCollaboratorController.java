@@ -21,16 +21,16 @@ import model.entities.Department;
 public class NewCollaboratorController implements Initializable{
 	
 	@FXML
-	TextField collaboratorNameField;
+	private TextField collaboratorNameField;
 	
 	@FXML
-	TextField collaboratorEmailField;
+	private TextField collaboratorEmailField;
 	
 	@FXML
-	Button saveButton;
+	private Button saveButton;
 	
 	@FXML
-	ComboBox<Department> departmentComboBox;
+	private ComboBox<Department> departmentComboBox;
 	
 	@FXML
 	public void onSaveButtonAction(){

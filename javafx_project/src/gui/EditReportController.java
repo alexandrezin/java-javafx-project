@@ -25,6 +25,7 @@ import model.entities.Report;
 public class EditReportController implements Initializable{
 	
 	private Report report;
+	private String previousPage;
 	
 	public void setReport(Report report) {
 		
@@ -40,28 +41,32 @@ public class EditReportController implements Initializable{
 		collaboratorComboBox.setValue(report.getCollaborator());
 	}
 	
-	@FXML
-	TextField reportTitleTextField;
+	public void setPreviousPage(String previousPage) {
+		this.previousPage = previousPage;
+	}
 	
 	@FXML
-	ComboBox<Collaborator> collaboratorComboBox;
+	private TextField reportTitleTextField;
 	
 	@FXML
-	DatePicker reportDatePicker;
+	private ComboBox<Collaborator> collaboratorComboBox;
 	
 	@FXML
-	TextArea reportDescriptionTextArea;
+	private DatePicker reportDatePicker;
 	
 	@FXML
-	Button updateButton;
+	private TextArea reportDescriptionTextArea;
+	
+	@FXML
+	private Button updateButton;
 	
 	@FXML 
-	Button cancelButton;
+	private Button cancelButton;
 	
 	@FXML
 	public void onCancelButtonAction() {
 		PageActions pageAction = new PageActions();
-		pageAction.load("SearchReportScreen");
+		pageAction.load(previousPage);
 	}
 	
 	@FXML

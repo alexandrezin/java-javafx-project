@@ -24,19 +24,19 @@ import model.entities.Report;
 public class NewReportController implements Initializable{
 	
 	@FXML
-	TextField reportTitleTextField;
+	private TextField reportTitleTextField;
 	
 	@FXML
-	ComboBox<Collaborator> collaboratorComboBox;
+	private ComboBox<Collaborator> collaboratorComboBox;
 	
 	@FXML
-	DatePicker reportDatePicker;
+	private DatePicker reportDatePicker;
 	
 	@FXML
-	TextArea reportDescriptionTextArea;
+	private TextArea reportDescriptionTextArea;
 	
 	@FXML
-	Button saveButton;
+	private Button saveButton;
 	
 	@FXML
 	public void onSaveButtonAction() {

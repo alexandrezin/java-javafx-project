@@ -23,7 +23,27 @@ public class ReportDaoJDBC implements ReportDao{
 	public ReportDaoJDBC(Connection conn) {
 		this.conn = conn;
 	}
-
+	
+	private Report createReport(ResultSet rs, Report report, Collaborator collaborator, Department department) throws SQLException {
+		
+		department.setId(rs.getInt("id_Department"));
+		department.setName(rs.getString("name_Department"));
+		
+		collaborator.setId(rs.getInt("id_Collaborator"));
+		collaborator.setName(rs.getString("name_Collaborator"));
+		collaborator.setEmail(rs.getString("email_Collaborator"));
+		collaborator.setRegisterDate(rs.getDate("registerDate_Collaborator"));
+		collaborator.setDepartment(department);
+		
+		report.setId(rs.getInt("id_Report"));
+		report.setTitle(rs.getString("title_Report"));
+		report.setDescription(rs.getString("description_Report"));
+		report.setDate(rs.getDate("date_Report"));
+		report.setColaborator(collaborator);
+		
+		return report;
+	}
+	
 	@Override
 	public void insert(Report report) {
 		PreparedStatement st = null;
@@ -98,22 +118,7 @@ public class ReportDaoJDBC implements ReportDao{
 				Collaborator collaborator = new Collaborator();
 				Department department = new Department();
 				
-				department.setId(rs.getInt("id_Department"));
-				department.setName(rs.getString("name_Department"));
-				
-				collaborator.setId(rs.getInt("id_Collaborator"));
-				collaborator.setName(rs.getString("name_Collaborator"));
-				collaborator.setEmail(rs.getString("email_Collaborator"));
-				collaborator.setRegisterDate(rs.getDate("registerDate_Collaborator"));
-				collaborator.setDepartment(department);
-				
-				report.setId(rs.getInt("id_Report"));
-				report.setTitle(rs.getString("title_Report"));
-				report.setDescription(rs.getString("description_Report"));
-				report.setDate(rs.getDate("date_Report"));
-				report.setColaborator(collaborator);
-				
-				reportList.add(report);
+				reportList.add(createReport(rs, report, collaborator, department));
 			}
 		} 
 		catch (SQLException e) {
@@ -126,6 +131,67 @@ public class ReportDaoJDBC implements ReportDao{
 		return reportList;
 	}
 
+	@Override
+	public List<Report> getByDepartment(Department department) {
+		Statement st = null;
+		ResultSet rs = null;
+		
+		List<Report> reportList = new ArrayList<Report>();
+		
+		try {
+			
+			st = conn.createStatement();
+			rs = st.executeQuery("SELECT * FROM tb_Report INNER JOIN tb_Collaborator ON tb_Report.id_Collaborator_Report = tb_Collaborator.id_Collaborator " +
+				    			 "INNER JOIN tb_Department ON tb_Collaborator.id_Department_Collaborator = tb_Department.id_Department " +
+								 "WHERE id_Department_Collaborator = " + department.getId());
+			
+			while(rs.next()) {
+				Report report = new Report();
+				Collaborator collaborator = new Collaborator();
+				
+				reportList.add(createReport(rs, report, collaborator, department));
+			}	
+		} 
+		catch (SQLException e) {
+			throw new DbException(e.getMessage());
+		}
+		finally {
+			DB.closeResultSet(rs);
+			DB.closeStatement(st);
+		}
+		return reportList;
+	}
+	
+	@Override
+	public List<Report> getByDate(Date date) {
+		Statement st = null;
+		ResultSet rs = null;
+		
+		List<Report> reportList = new ArrayList<Report>();
+		
+		try {
+			st = conn.createStatement();
+			rs = st.executeQuery("SELECT * FROM tb_Report INNER JOIN tb_Collaborator ON tb_Report.id_Collaborator_Report = tb_Collaborator.id_Collaborator " +
+	    			 			 "INNER JOIN tb_Department ON tb_Collaborator.id_Department_Collaborator = tb_Department.id_Department " +
+	    			 			 "WHERE date_Report = '" + new java.sql.Date(date.getTime()) + "'");
+			
+			while(rs.next()) {
+				Report report = new Report();
+				Collaborator collaborator = new Collaborator();
+				Department department = new Department();
+				
+				reportList.add(createReport(rs, report, collaborator, department));
+			}
+		} 
+		catch (SQLException e) {
+			throw new DbException(e.getMessage());
+		}
+		finally {
+			DB.closeResultSet(rs);
+			DB.closeStatement(st);
+		}
+		return reportList;
+	}
 	
 	@Override
 	public List<Report> getAll() {
@@ -144,22 +210,7 @@ public class ReportDaoJDBC implements ReportDao{
 				Collaborator collaborator = new Collaborator();
 				Department department = new Department();
 				
-				department.setId(rs.getInt("id_Department"));
-				department.setName(rs.getString("name_Department"));
-				
-				collaborator.setId(rs.getInt("id_Collaborator"));
-				collaborator.setName(rs.getString("name_Collaborator"));
-				collaborator.setEmail(rs.getString("email_Collaborator"));
-				collaborator.setRegisterDate(rs.getDate("registerDate_Collaborator"));
-				collaborator.setDepartment(department);
-				
-				report.setId(rs.getInt("id_Report"));
-				report.setTitle(rs.getString("title_Report"));
-				report.setDescription(rs.getString("description_Report"));
-				report.setDate(rs.getDate("date_Report"));
-				report.setColaborator(collaborator);
-				
-				reportList.add(report);
+				reportList.add(createReport(rs, report, collaborator, department));
 			}
 		} 
 		catch (SQLException e) {

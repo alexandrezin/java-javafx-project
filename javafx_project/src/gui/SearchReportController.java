@@ -24,34 +24,32 @@ import model.entities.Report;
 public class SearchReportController implements Initializable{
 	
 	@FXML
-	TextField searchReportTextField;
+	private TextField searchReportTextField;
 	
 	@FXML
-	DatePicker reportDatePicker;
+	private DatePicker reportDatePicker;
 	
 	@FXML
-	Button removeDatePickerSelection;
+	private Button removeDatePickerSelection;
 	
 	@FXML
-	TableView<Report> reportTableView;
+	private TableView<Report> reportTableView;
 	
 	@FXML
-	TableColumn<Report, String> titleTableColumn;
+	private TableColumn<Report, String> titleTableColumn;
 	
 	@FXML
-	TableColumn<Report, String> dateTableColumn;
+	private TableColumn<Report, String> dateTableColumn;
 	
 	@FXML
-	TableColumn<Report, String> collaboratorTableColumn;
+	private TableColumn<Report, String> collaboratorTableColumn;
 	
 	@FXML
-	Button editSelectedButton;
+	private Button editSelectedButton;
 	
 	@FXML
 	public void onSearchReportTextFieldChange() {	
-		
-		System.out.println(reportDatePicker.getValue());
-		
+
 		//Get all Reports
 		ReportDao reportDao = DaoFactory.createReportDao();
 		
@@ -75,7 +73,7 @@ public class SearchReportController implements Initializable{
 		Report report = reportTableView.getSelectionModel().getSelectedItem();
 		if (report != null) {
 			PageActions pageAction = new PageActions();
-			pageAction.loadWithObject("EditReportScreen", report);
+			pageAction.loadWithObject("EditReportScreen", "SearchReportScreen", report);
 		}
 	}
 	

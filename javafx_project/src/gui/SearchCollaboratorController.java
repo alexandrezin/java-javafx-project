@@ -21,22 +21,22 @@ import model.entities.Collaborator;
 public class SearchCollaboratorController implements Initializable{
 	
 	@FXML
-	TextField searchCollaboratorTextField;
+	private TextField searchCollaboratorTextField;
 	
 	@FXML
-	TableView<Collaborator> collaboratorTableView;
+	private TableView<Collaborator> collaboratorTableView;
 	
 	@FXML
-	TableColumn<Collaborator, String> nameTableColumn;
+	private TableColumn<Collaborator, String> nameTableColumn;
 	
 	@FXML
-	TableColumn<Collaborator, String> emailTableColumn;
+	private TableColumn<Collaborator, String> emailTableColumn;
 	
 	@FXML
-	TableColumn<Collaborator, String> departmentTableColumn;
+	private TableColumn<Collaborator, String> departmentTableColumn;
 	
 	@FXML
-	Button editSelectedButton;
+	private Button editSelectedButton;
 	
 	@FXML
 	public void onSearchCollaboratorTextFieldChange(){
@@ -55,7 +55,7 @@ public class SearchCollaboratorController implements Initializable{
 		Collaborator collaborator = collaboratorTableView.getSelectionModel().getSelectedItem();
 		if (collaborator != null) {
 			PageActions pageAction = new PageActions();
-			pageAction.loadWithObject("EditCollaboratorScreen", collaborator);
+			pageAction.loadWithObject("EditCollaboratorScreen", "SearchCollaboratorScreen", collaborator);
 		}
 	}
 	

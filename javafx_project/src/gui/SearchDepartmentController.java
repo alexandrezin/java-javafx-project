@@ -16,13 +16,13 @@ import model.entities.Department;
 public class SearchDepartmentController implements Initializable{
 	
 	@FXML
-	TextField searchDepartmentTextField;
+	private TextField searchDepartmentTextField;
 	
 	@FXML
-	ListView<Department> departmentListView;
+	private ListView<Department> departmentListView;
 	
 	@FXML
-	Button editSelectedButton;
+	private Button editSelectedButton;
 	
 	@FXML
 	public void onSearchDepartmentTextFieldChange(){
@@ -35,7 +35,7 @@ public class SearchDepartmentController implements Initializable{
 		Department department = departmentListView.getSelectionModel().getSelectedItem();
 		if (department != null) {
 			PageActions pageAction = new PageActions();
-			pageAction.loadWithObject("EditDepartmentScreen", department);
+			pageAction.loadWithObject("EditDepartmentScreen", "SearchDepartmentScreen", department);
 		}
 	}
 	

@@ -2,6 +2,7 @@ package application;
 	
 import java.io.IOException;
 
+import gui.util.PageActions;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -16,7 +17,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {	
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/FirstScreen.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/TopBarMenu.fxml"));
 			ScrollPane scrollPane = loader.load();
 			
 			scrollPane.setFitToHeight(true);
@@ -24,8 +25,11 @@ public class Main extends Application {
 			
 			mainScene = new Scene(scrollPane);
 			primaryStage.setScene(mainScene);
-			primaryStage.setTitle("Sample JavaFX application");
+			primaryStage.setTitle("ReportX v1.0");
 			primaryStage.show();
+			
+			PageActions pageAction = new PageActions();
+			pageAction.load("HomeScreen");
 		} 
 		catch (IOException e) {
 			e.printStackTrace();

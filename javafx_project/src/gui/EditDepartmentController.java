@@ -18,20 +18,31 @@ import model.entities.Department;
 public class EditDepartmentController implements Initializable{
 	
 	private Department department;
+	private String previousPage;
 	
 	public void setDepartment (Department department) {
 		this.department = department;
 		departmentNameTextField.setText(department.getName());
 	}
 	
-	@FXML
-	TextField departmentNameTextField;
+	public void setPreviousPage(String previousPage) {
+		this.previousPage = previousPage;
+	}
 	
 	@FXML
-	Button departmentUptadeNameButton;
+	private TextField departmentNameTextField;
 	
 	@FXML
-	Button cancelButton;
+	private Button departmentUptadeNameButton;
+	
+	@FXML
+	private Button cancelButton;
+	
+	@FXML
+	public void onCancelButtonAction() {
+		PageActions pageAction = new PageActions();
+		pageAction.load(previousPage);
+	}
 	
 	@FXML
 	public void onDepartmentUpdateButtonAction() {
@@ -46,12 +57,6 @@ public class EditDepartmentController implements Initializable{
 		catch(DbException e) {
 			Alerts.showAlert("Data has NOT been saved", "The department couldn't been saved! \nError: " + e.getMessage(), AlertType.ERROR);
 		}
-	}
-	
-	@FXML
-	public void onCancelButtonAction() {
-		PageActions pageAction = new PageActions();
-		pageAction.load("SearchDepartmentScreen");
 	}
 	
 	@Override

@@ -38,10 +38,10 @@ public class PageActions {
 		
 	}
 	
-	public synchronized void loadWithObject (String pageName, Object obj) {
+	public synchronized void loadWithObject (String targetPageName, String currentPageName, Object obj) {
 		try {
 			
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/" + pageName + ".fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/" + targetPageName + ".fxml"));
 			VBox newVBox = loader.load();
 			//
 			Scene mainScene = Main.getMainScene();
@@ -53,21 +53,24 @@ public class PageActions {
 			mainVBox.getChildren().addAll(newVBox.getChildren());
 				
 			//EditDepartmentScreen
-			if(pageName.equals("EditDepartmentScreen")) {
+			if(targetPageName.equals("EditDepartmentScreen")) {
 				EditDepartmentController controller = loader.getController();
 				controller.setDepartment((Department)obj);
+				controller.setPreviousPage(currentPageName);
 			}
 			
 			//EditDepartmentScreen
-			if(pageName.equals("EditCollaboratorScreen")) {
+			if(targetPageName.equals("EditCollaboratorScreen")) {
 				EditCollaboratorController controller = loader.getController();
 				controller.setCollaborator((Collaborator)obj);
+				controller.setPreviousPage(currentPageName);
 			}
 			
 			//EditDepartmentScreen
-			if(pageName.equals("EditReportScreen")) {
+			if(targetPageName.equals("EditReportScreen")) {
 				EditReportController controller = loader.getController();
 				controller.setReport((Report)obj);
+				controller.setPreviousPage(currentPageName);
 			}
 			
 		} catch (IOException e) {

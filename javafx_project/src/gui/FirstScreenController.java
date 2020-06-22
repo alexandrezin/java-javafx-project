@@ -11,55 +11,64 @@ import javafx.scene.control.MenuItem;
 public class FirstScreenController implements Initializable{
 	
 	@FXML
-	private MenuItem menuItemNewReport;
+	private MenuItem homeScreenMenuItem;
 	
 	@FXML
-	private MenuItem menuItemNewCollaborator;
+	private MenuItem newReportMenuItem;
 	
 	@FXML
-	private MenuItem menuItemNewDepartment;
+	private MenuItem newCollaboratorMenuItem;
 	
 	@FXML
-	private MenuItem menuItemSearchReport;
+	private MenuItem newDepartmentMenuItem;
 	
 	@FXML
-	private MenuItem menuItemSearchCollaborator;
+	private MenuItem searchReportMenuItem;
 	
 	@FXML
-	private MenuItem menuItemSearchDepartment;
+	private MenuItem searchCollaboratorMenuItem;
 	
 	@FXML
-	public void onMenuItemNewReportAction() {
+	private MenuItem searchDepartmentMenuItem;
+	
+	@FXML
+	public void onHomeScreenMenuItemAction() {
+		PageActions pageAction = new PageActions();
+		pageAction.load("HomeScreen");
+	}
+	
+	@FXML
+	public void onNewReportMenuItemAction() {
 		PageActions pageAction = new PageActions();
 		pageAction.load("NewReportScreen");
 	}
 	
 	@FXML
-	public void onMenuItemNewCollaboratorAction() {
+	public void onNewCollaboratorMenuItemAction() {
 		PageActions pageAction = new PageActions();
 		pageAction.load("NewCollaboratorScreen");
 	}
 	
 	@FXML
-	public void onMenuItemNewDepartmentAction() {
+	public void onNewDepartmentMenuItemAction() {
 		PageActions pageAction = new PageActions();
 		pageAction.load("NewDepartmentScreen");
 	}
 	
 	@FXML
-	public void onMenuItemSearchReportAction() {
+	public void onSearchReportMenuItemAction() {
 		PageActions pageAction = new PageActions();
 		pageAction.load("SearchReportScreen");
 	}
 	
 	@FXML
-	public void onMenuItemSearchCollaboratorAction() {
+	public void onSearchCollaboratorMenuItemAction() {
 		PageActions pageAction = new PageActions();
 		pageAction.load("SearchCollaboratorScreen");
 	}
 	
 	@FXML
-	public void onMenuItemSearchDepartmentAction() {
+	public void onSearchDepartmentMenuItemAction() {
 		PageActions pageAction = new PageActions();
 		pageAction.load("SearchDepartmentScreen");
 	}

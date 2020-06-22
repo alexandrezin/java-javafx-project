@@ -21,6 +21,7 @@ import model.entities.Department;
 public class EditCollaboratorController implements Initializable{
 
 	private Collaborator collaborator;
+	private String previousPage;
 	
 	public void setCollaborator(Collaborator collaborator) {
 		this.collaborator = collaborator;
@@ -33,25 +34,29 @@ public class EditCollaboratorController implements Initializable{
 		departmentComboBox.setValue(this.collaborator.getDepartment());
 	}
 	
-	@FXML
-	TextField collaboratorNameField;
+	public void setPreviousPage(String previousPage) {
+		this.previousPage = previousPage;
+	}
 	
 	@FXML
-	TextField collaboratorEmailField;
+	private TextField collaboratorNameField;
 	
 	@FXML
-	Button updateButton;
+	private TextField collaboratorEmailField;
 	
 	@FXML
-	Button cancelButton;
+	private Button updateButton;
 	
 	@FXML
-	ComboBox<Department> departmentComboBox;
+	private Button cancelButton;
+	
+	@FXML
+	private ComboBox<Department> departmentComboBox;
 	
 	@FXML
 	public void onCancelButtonAction() {
 		PageActions pageAction = new PageActions();
-		pageAction.load("SearchCollaboratorScreen");
+		pageAction.load(previousPage);
 	}
 	
 	

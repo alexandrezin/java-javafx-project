@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.VBox?>
+
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.FirstScreenController">
+   <content>
+      <VBox prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <MenuBar>
+              <menus>
+                <Menu mnemonicParsing="false" text="ReportX">
+                  <items>
+                    <MenuItem fx:id="homeScreenMenuItem" mnemonicParsing="false" onAction="#onHomeScreenMenuItemAction" text="Home Screen" />
+                  </items>
+                </Menu>
+                  <Menu mnemonicParsing="false" text="New">
+                     <items>
+                        <MenuItem fx:id="newReportMenuItem" mnemonicParsing="false" onAction="#onNewReportMenuItemAction" text="Report" />
+                        <MenuItem fx:id="newCollaboratorMenuItem" mnemonicParsing="false" onAction="#onNewCollaboratorMenuItemAction" text="Collaborator" />
+                        <MenuItem fx:id="newDepartmentMenuItem" mnemonicParsing="false" onAction="#onNewDepartmentMenuItemAction" text="Department" />
+                     </items>
+                  </Menu>
+                <Menu mnemonicParsing="false" text="Search">
+                  <items>
+                    <MenuItem fx:id="searchReportMenuItem" mnemonicParsing="false" onAction="#onSearchReportMenuItemAction" text="Reports" />
+                        <MenuItem fx:id="searchCollaboratorMenuItem" mnemonicParsing="false" onAction="#onSearchCollaboratorMenuItemAction" text="Collaborators" />
+                        <MenuItem fx:id="searchDepartmentMenuItem" mnemonicParsing="false" onAction="#onSearchDepartmentMenuItemAction" text="Departments" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+         </children>
+      </VBox>
+   </content>
+</ScrollPane>

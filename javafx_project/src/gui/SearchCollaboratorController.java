@@ -46,8 +46,8 @@ public class SearchCollaboratorController implements Initializable{
 		List<Collaborator> collaboratorList = collaboratorDao.getByParemeter(searchCollaboratorTextField.getText());
 		
 		//Convert to Observable List
-		ObservableList<Collaborator> obsCollaboratorList = FXCollections.observableArrayList(collaboratorList);
-		collaboratorTableView.setItems(obsCollaboratorList);
+		ObservableList<Collaborator> collaboratorObsList = FXCollections.observableArrayList(collaboratorList);
+		collaboratorTableView.setItems(collaboratorObsList);
 	}
 	
 	@FXML
@@ -71,8 +71,8 @@ public class SearchCollaboratorController implements Initializable{
 		List<Collaborator> collaboratorList = collaboratorDao.getAll();
 		
 		//Convert to Observable List
-		ObservableList<Collaborator> obsCollaboratorList = FXCollections.observableArrayList(collaboratorList);
-		collaboratorTableView.setItems(obsCollaboratorList);
+		ObservableList<Collaborator> collaboratorObsList = FXCollections.observableArrayList(collaboratorList);
+		collaboratorTableView.setItems(collaboratorObsList);
 		
 	}
 }

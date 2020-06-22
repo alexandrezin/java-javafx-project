@@ -68,12 +68,6 @@ public class CollaboratorDaoJDBC implements CollaboratorDao{
 		// TODO Auto-generated method stub
 		
 	}
-
-	@Override
-	public Collaborator getById(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	
 	@Override
 	public List<Collaborator> getByParemeter(String parameter) {
@@ -84,19 +78,17 @@ public class CollaboratorDaoJDBC implements CollaboratorDao{
 		try {
 			st = conn.createStatement();
 			rs = st.executeQuery("SELECT * FROM tb_Collaborator INNER JOIN tb_Department ON tb_Collaborator.id_Department_Collaborator = tb_Department.id_Department "
-							  + "WHERE name_Collaborator LIKE '%" + parameter + "%' or email_Collaborator LIKE '%" + parameter + "%' or name_Department LIKE '%" + parameter + "%'");
-			
+					           + "WHERE name_Collaborator LIKE '%" + parameter + "%' or email_Collaborator LIKE '%" + parameter + "%' or name_Department LIKE '%" + parameter + "%'");
+	
 			while(rs.next()) {
 				Collaborator collaborator = new Collaborator();
 				Department department = new Department();
-				
 				//Collaborator
 				collaborator.setId(rs.getInt("id_Collaborator"));
 				collaborator.setName(rs.getString("name_Collaborator"));
 				collaborator.setEmail(rs.getString("email_Collaborator"));
 				collaborator.setRegisterDate(rs.getDate("registerDate_Collaborator"));
 				//Department
-				
 				department.setId(rs.getInt("id_Department_Collaborator"));
 				department.setName(rs.getString("name_Department"));
 				

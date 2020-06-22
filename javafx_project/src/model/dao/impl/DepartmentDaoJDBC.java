@@ -64,12 +64,6 @@ PreparedStatement st = null;
 	}
 
 	@Override
-	public Department getById(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	@Override
 	public List<Department> getByParemeter(String parameter) {
 		List<Department> departmentList = new  ArrayList<Department>();
 		Statement st = null;

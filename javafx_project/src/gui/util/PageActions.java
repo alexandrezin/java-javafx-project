@@ -5,6 +5,7 @@ import java.io.IOException;
 import application.Main;
 import gui.EditCollaboratorController;
 import gui.EditDepartmentController;
+import gui.EditReportController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -12,6 +13,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
 import model.entities.Collaborator;
 import model.entities.Department;
+import model.entities.Report;
 
 public class PageActions {
 	
@@ -60,6 +62,12 @@ public class PageActions {
 			if(pageName.equals("EditCollaboratorScreen")) {
 				EditCollaboratorController controller = loader.getController();
 				controller.setCollaborator((Collaborator)obj);
+			}
+			
+			//EditDepartmentScreen
+			if(pageName.equals("EditReportScreen")) {
+				EditReportController controller = loader.getController();
+				controller.setReport((Report)obj);
 			}
 			
 		} catch (IOException e) {
